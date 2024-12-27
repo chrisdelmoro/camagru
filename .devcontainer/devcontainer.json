@@ -1,0 +1,24 @@
+{
+  "name": "Camagru Project",
+  "service": "backend",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "christian-kohler.npm-intellisense",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "rangav.vscode-thunder-client"
+      ],
+      "settings": {
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "postCreateCommand": "npm install"
+}

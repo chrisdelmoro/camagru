@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace/:cached
+      - /workspace/node_modules
+    ports:
+      - 3000:3000
+    command: "npm run dev"
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - 8080:80
+    depends_on:
+      - backend

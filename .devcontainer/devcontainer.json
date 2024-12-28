@@ -8,8 +8,7 @@
       "extensions": [
         "christian-kohler.npm-intellisense",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "rangav.vscode-thunder-client"
+        "esbenp.prettier-vscode"
       ],
       "settings": {
         "[typescript]": {

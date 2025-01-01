@@ -2,7 +2,14 @@ import { Request, Response } from "express";
 import { userCreateService } from "../services/user-service";
 
 export const UserFindController = (req: Request, res: Response): void => {
-  res.status(200).json(userCreateService);
+  const created = userCreateService(req.body);
+
+  if (!created) {
+    res.status(409).send("User already exists!");
+    return;
+  }
+
+  res.status(201).json(created);
 };
 
 export const UserCreateController = (req: Request, res: Response): void => {

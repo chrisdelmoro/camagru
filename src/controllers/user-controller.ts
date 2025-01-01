@@ -12,6 +12,7 @@ export const UserFindOneController = (req: Request, res: Response): void => {
 
   if (!found) {
     res.status(404).send("User not found!");
+    return;
   }
 
   res.status(200).json(found);

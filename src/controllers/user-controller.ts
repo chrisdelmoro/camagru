@@ -1,13 +1,14 @@
 import { Request, Response } from "express";
 import {
-  userCreateService,
-  userFindManyService,
-  userFindOneService,
-  userUpdateService,
+  UserCreateService,
+  UserDeleteService,
+  UserFindManyService,
+  UserFindOneService,
+  UserUpdateService,
 } from "../services/user-service";
 
 export const UserFindOneController = (req: Request, res: Response): void => {
-  const found = userFindOneService(req.params.username);
+  const found = UserFindOneService(req.params.username);
 
   if (!found) {
     res.status(404).send("User not found!");
@@ -17,11 +18,11 @@ export const UserFindOneController = (req: Request, res: Response): void => {
 };
 
 export const UserFindManyController = (req: Request, res: Response): void => {
-  res.status(200).json(userFindManyService());
+  res.status(200).json(UserFindManyService());
 };
 
 export const UserCreateController = (req: Request, res: Response): void => {
-  const created = userCreateService(req.body);
+  const created = UserCreateService(req.body);
 
   if (!created) {
     res.status(409).send("User already exists!");
@@ -32,7 +33,7 @@ export const UserCreateController = (req: Request, res: Response): void => {
 };
 
 export const UserUpdateController = (req: Request, res: Response): void => {
-  const updated = userUpdateService(req.body);
+  const updated = UserUpdateService(req.body);
 
   if (!updated) {
     res.status(404).send("User not found!");
@@ -43,5 +44,12 @@ export const UserUpdateController = (req: Request, res: Response): void => {
 };
 
 export const UserDeleteController = (req: Request, res: Response): void => {
-  res.send("UserDeleteController accessed!");
+  const deleted = UserDeleteService(req.params.username);
+
+  if (!deleted) {
+    res.status(404).send("User not found!");
+    return;
+  }
+
+  res.status(204).send();
 };

@@ -13,6 +13,6 @@ userRouter.get("/:username", UserFindOneController);
 userRouter.get("/", UserFindManyController);
 userRouter.post("/", UserCreateController);
 userRouter.patch("/", UserUpdateController);
-userRouter.delete("/", UserDeleteController);
+userRouter.delete("/:username", UserDeleteController);
 
 export default userRouter;

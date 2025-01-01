@@ -9,7 +9,7 @@ const users: Array<UserInterface> = [
   { username: "maria", password: "ghfdhfg" },
 ];
 
-export const userFindOneService = (username: string): UserInterface | null => {
+export const UserFindOneService = (username: string): UserInterface | null => {
   const exist = users.find((user) => user.username === username);
 
   if (!exist) {
@@ -19,11 +19,11 @@ export const userFindOneService = (username: string): UserInterface | null => {
   return exist;
 };
 
-export const userFindManyService = (): Array<UserInterface> => {
+export const UserFindManyService = (): Array<UserInterface> => {
   return users;
 };
 
-export const userCreateService = (
+export const UserCreateService = (
   userToCreate: UserInterface
 ): UserInterface | null => {
   const exist = users.find((user) => user.username === userToCreate.username);
@@ -37,7 +37,7 @@ export const userCreateService = (
   return userToCreate;
 };
 
-export const userUpdateService = (
+export const UserUpdateService = (
   payload: UserInterface
 ): UserInterface | null => {
   const userIndex = users.findIndex(
@@ -50,4 +50,15 @@ export const userUpdateService = (
 
   users[userIndex] = { ...users[userIndex], ...payload };
   return users[userIndex];
+};
+
+export const UserDeleteService = (username: string): boolean => {
+  const exists = users.findIndex((user) => user.username === username);
+
+  if (exists === -1) {
+    return false;
+  }
+
+  users.splice(exists, 1);
+  return true;
 };

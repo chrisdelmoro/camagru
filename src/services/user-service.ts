@@ -19,6 +19,10 @@ export const userFindOneService = (username: string): UserInterface | null => {
   return exist;
 };
 
+export const userFindManyService = (): Array<UserInterface> => {
+  return users;
+};
+
 export const userCreateService = (
   userToCreate: UserInterface
 ): UserInterface | null => {

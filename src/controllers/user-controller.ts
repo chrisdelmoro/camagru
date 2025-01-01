@@ -3,6 +3,7 @@ import {
   userCreateService,
   userFindManyService,
   userFindOneService,
+  userUpdateService,
 } from "../services/user-service";
 
 export const UserFindOneController = (req: Request, res: Response): void => {
@@ -31,7 +32,14 @@ export const UserCreateController = (req: Request, res: Response): void => {
 };
 
 export const UserUpdateController = (req: Request, res: Response): void => {
-  res.send("UserUpdateController accessed!");
+  const updated = userUpdateService(req.body);
+
+  if (!updated) {
+    res.status(404).send("User not found!");
+    return;
+  }
+
+  res.status(200).json(updated);
 };
 
 export const UserDeleteController = (req: Request, res: Response): void => {

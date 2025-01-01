@@ -36,3 +36,18 @@ export const userCreateService = (
 
   return userToCreate;
 };
+
+export const userUpdateService = (
+  payload: UserInterface
+): UserInterface | null => {
+  const userIndex = users.findIndex(
+    (user) => user.username === payload.username
+  );
+
+  if (userIndex === -1) {
+    return null;
+  }
+
+  users[userIndex] = { ...users[userIndex], ...payload };
+  return users[userIndex];
+};

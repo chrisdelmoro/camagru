@@ -2,13 +2,13 @@ import { Router, Request, Response } from "express";
 import {
   UserCreateController,
   UserDeleteController,
-  UserFindController,
+  UserFindOneController,
   UserUpdateController,
 } from "../controllers/user-controller";
 
 const userRouter = Router();
 
-userRouter.get("/", UserFindController);
+userRouter.get("/", UserFindOneController);
 userRouter.post("/", UserCreateController);
 userRouter.patch("/", UserUpdateController);
 userRouter.delete("/", UserDeleteController);

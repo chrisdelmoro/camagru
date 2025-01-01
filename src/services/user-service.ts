@@ -9,6 +9,16 @@ const users: Array<UserInterface> = [
   { username: "maria", password: "ghfdhfg" },
 ];
 
+export const userFindOneService = (username: string): UserInterface | null => {
+  const exist = users.find((user) => user.username === username);
+
+  if (!exist) {
+    return null;
+  }
+
+  return exist;
+};
+
 export const userCreateService = (
   userToCreate: UserInterface
 ): UserInterface | null => {

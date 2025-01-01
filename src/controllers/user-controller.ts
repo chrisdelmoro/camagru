@@ -1,7 +1,22 @@
 import { Request, Response } from "express";
-import { userCreateService } from "../services/user-service";
+import {
+  userCreateService,
+  userFindOneService,
+} from "../services/user-service";
 
-export const UserFindController = (req: Request, res: Response): void => {
+export const UserFindOneController = (req: Request, res: Response): void => {
+  const found = userFindOneService(req.body.username);
+
+  if (!found) {
+    res.status(404).send("User not found!");
+  }
+
+  res.status(200).json(found);
+};
+
+export const UserFindManyController = (req: Request, res: Response): void => {};
+
+export const UserCreateController = (req: Request, res: Response): void => {
   const created = userCreateService(req.body);
 
   if (!created) {
@@ -10,10 +25,6 @@ export const UserFindController = (req: Request, res: Response): void => {
   }
 
   res.status(201).json(created);
-};
-
-export const UserCreateController = (req: Request, res: Response): void => {
-  res.send("UserCreateController accessed!");
 };
 
 export const UserUpdateController = (req: Request, res: Response): void => {

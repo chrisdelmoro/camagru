@@ -1,8 +1,8 @@
 # Use uma imagem Node.js oficial
-FROM node:18-alpine
+FROM node:22-alpine
 
 # Configurações básicas
-WORKDIR /workspace
+WORKDIR /camagru
 
 # Instalar dependências do sistema
 RUN apk add --no-cache bash git
@@ -19,3 +19,4 @@ EXPOSE 3000
 
 # Comando padrão ao iniciar o container
 CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "start:prod"]

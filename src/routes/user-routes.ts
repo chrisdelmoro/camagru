@@ -6,13 +6,14 @@ import {
   UserFindOneController,
   UserUpdateController,
 } from "../controllers/user-controller";
+import { authenticateToken } from "../middlewares/auth-middlewares";
 
 const userRouter = Router();
 
-userRouter.get("/:username", UserFindOneController);
-userRouter.get("/", UserFindManyController);
-userRouter.post("/", UserCreateController);
-userRouter.patch("/", UserUpdateController);
-userRouter.delete("/:username", UserDeleteController);
+userRouter.get("/:username", authenticateToken, UserFindOneController);
+userRouter.get("/", authenticateToken, UserFindManyController);
+userRouter.post("/", authenticateToken, UserCreateController);
+userRouter.patch("/", authenticateToken, UserUpdateController);
+userRouter.delete("/:username", authenticateToken, UserDeleteController);
 
 export default userRouter;

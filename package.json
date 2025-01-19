@@ -1,12 +1,12 @@
 {
   "name": "github",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node build/app.js",
-    "dev": "nodemon src/app.ts"
+    "start": "node build/server.js",
+    "dev": "nodemon src/server.ts"
   },
   "repository": {
     "type": "git",

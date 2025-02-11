@@ -1,11 +1,11 @@
 {
   "name": "Camagru Project",
   "service": "backend",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "docker-compose.camagru.yml",
   "shutdownAction": "stopCompose",
   "workspaceFolder": "/workspace/camagru",
   "forwardPorts": [3000],
-  "postCreateCommand": "npm install",
+  "postCreateCommand": "npm install && npm install -g @nestjs/cli",
   "customizations": {
     "vscode": {
       "extensions": [

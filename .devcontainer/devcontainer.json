@@ -4,8 +4,15 @@
   "dockerComposeFile": "docker-compose.camagru.yml",
   "shutdownAction": "stopCompose",
   "workspaceFolder": "/workspace/camagru",
-  "forwardPorts": [3000],
+  "forwardPorts": [3000, 5432],
   "postCreateCommand": "npm install && npm install -g @nestjs/cli",
+  "remoteEnv": {
+    "DB_HOST": "db",
+    "DB_PORT": "5432",
+    "DB_NAME": "camagru",
+    "DB_USERNAME": "camagru",
+    "DB_PASSWORD": "password"
+  },
   "customizations": {
     "vscode": {
       "extensions": [

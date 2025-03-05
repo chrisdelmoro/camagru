@@ -7,7 +7,7 @@ const userController = new UsersController();
 
 userRouter.get("/:username", authenticateToken, userController.router);
 userRouter.get("/", authenticateToken, userController.router);
-userRouter.post("/", authenticateToken, userController.router);
+userRouter.post("/", userController.router);
 userRouter.patch("/", authenticateToken, userController.router);
 userRouter.delete("/:username", authenticateToken, userController.router);
 

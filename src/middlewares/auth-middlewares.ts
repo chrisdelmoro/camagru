@@ -15,8 +15,6 @@ export const authenticateToken = (
   }
 
   jwt.verify(token, process.env.JWT_SECRET as string, (err: any) => {
-    console.log(err);
-
     if (err) {
       res.sendStatus(403);
       return;
